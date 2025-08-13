@@ -29,3 +29,10 @@ do_filogic_patches:append() {
          touch patch_applied_6_6
     fi
 }
+
+# Ensure DTBs are built even if we're using fitImage
+do_compile:append() {
+    if [ -n "${KERNEL_DEVICETREE}" ]; then
+        oe_runmake ${KERNEL_DEVICETREE}
+    fi
+}
