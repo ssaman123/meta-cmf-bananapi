@@ -36,3 +36,18 @@ do_compile:append() {
         oe_runmake ${KERNEL_DEVICETREE}
     fi
 }
+
+python __anonymous() {
+    # Use the correct package name; often the package is 'kernel-module-*' or 'kernel-6'
+    d.delVar("pkg_postinst:kernel-6")
+    # also target the generated package name if different; check build output and change above accordingly
+}
+
+# Add on-target depmod instead
+pkg_postinst_ontarget:kernel-6 () {
+    if [ -x /sbin/depmod ] || [ -x /usr/sbin/depmod ]; then
+        depmod -a || true
+    fi
+}
+
+CMDLINE:append = "${@bb.utils.contains('DISTRO_FEATURES','dac', 'cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1', '', d)}"

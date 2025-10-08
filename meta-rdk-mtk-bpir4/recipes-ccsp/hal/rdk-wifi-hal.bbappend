@@ -30,6 +30,6 @@ do_install:append() {
   fi
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
   /nvram/* \
 "

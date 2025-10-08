@@ -48,6 +48,7 @@ DISTRO_FEATURES:remove = " lan0_as_wan"
 #Need to enable below distro once required changes are merged 
 #DISTRO_FEATURES:append = " EasyMesh"
 #DISTRO_FEATURES:append = " sta_manager"
+<<<<<<< HEAD
 #DISTRO_FEATURES:append = " with_alsap"
 PREFERRED_VERSION_go = "1.24.%"
 
@@ -66,3 +67,7 @@ DISTRO_FEATURES:append = " CONFIG_IEEE80211BE"
 
 #Enable the below DISTRO to enable Hybrid Hal(rndis/modem) for cellular devices
 #DISTRO_FEATURES:append:broadband = " cellular_hybrid_support"
+=======
+PREFERRED_VERSION_go = "1.19.%"
+PREFERRED_VERSION_wpa-supplicant = "2.11"
+>>>>>>> 1629d2e (RDKBACCL-1156: Build RDKB generic image)

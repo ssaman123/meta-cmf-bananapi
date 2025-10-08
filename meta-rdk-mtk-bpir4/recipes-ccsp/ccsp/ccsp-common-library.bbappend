@@ -78,6 +78,11 @@ do_install:append_class-target() {
    sed -i '/ExecStart=/i ExecStartPre=/usr/bin/start_cron' ${D}/lib/systemd/system/RdkFwUpgradeManager.service
 }
 
+TARGET_CFLAGS += " \
+    -Wno-error=address \
+    -Wno-error=implicit-function-declaration \
+    -Wno-error=format-truncation \
+"
 
 SYSTEMD_SERVICE:${PN}:remove_onewifi = " ccspwifiagent.service"
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'onewifi.service ', '', d)}"

@@ -2,6 +2,7 @@ EXTRA_OEMAKE = "CONFIG_BUILD_WPA_CLIENT_SO=y"
 FILES_SOLIBSDEV = ""
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
+
 DEPENDS:remove += "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', 'ubus udebug', '', d)}"
 SRC_URI:append = "${@bb.utils.contains('DISTRO_FEATURES', 'OneWifi', ' file://0001-remove-ubus-on-rdkb.patch', '', d)}"
 do_configure:append() {

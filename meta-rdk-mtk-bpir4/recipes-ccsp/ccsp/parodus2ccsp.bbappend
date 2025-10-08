@@ -20,4 +20,6 @@ do_install:append () {
 FILES:${PN}:append = " \
      ${base_libdir_native}/rdk/* \
      /etc/parodus/* \
+     ${bindir}/webpa \
+     ${exec_prefix}/ccsp \
      "
